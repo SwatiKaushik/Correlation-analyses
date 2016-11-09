@@ -1,4 +1,4 @@
-# Separates patients id according to the vital status and generate two different groups to calculate the correlation of genes
+# Separates patient id according to the vital status (Deceased/living) and generate two different groups to calculate the correlation of genes
 # Swati Kaushik Nov 8 2016
 
 #! /usr/bin/env Rscript 
