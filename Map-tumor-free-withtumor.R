@@ -1,5 +1,6 @@
 # Separates patients id according to the vital status and generate two different groups to calculate the correlation of genes
-# Swati Kaushik Nov 8 2016
+# Swati Kaushik Nov 14 2016 
+# modified from Map-tumor-vital-stats.R
 
 #! /usr/bin/env Rscript 
 
@@ -45,7 +46,7 @@ print.usage <- function(){
 }
 
 #verify if two data files are passed
-if(length(args)<2) {
+if(length(args)<3) {
 	cat(print.usage)
 	stop("Incorrect or missing required input!")
 }
@@ -62,11 +63,17 @@ if (! file.exists(clinical.file)) {
 	cat("Clinical file ", clinical.file,"does not exist\n")
 }
 
+# verify if selected gene file is located in the working directory
+subset.genes <- args[[3]] 
+if (! file.exists(subset.genes)) {
+	cat("subset.genes ", subset.genes,"does not exist\n")
+}
+
 #open expression file
 expression.file1 <- read.table(args[1], header =T, fill = TRUE, sep="\t")
 
 #get the name of selected gene sets. This is to reduce the computation time
-subset.genes <- read.table("gene-names-exp.out", header= T)
+subset.genes <- read.table(args[3], header= T)
 unq <- levels(droplevels(subset.genes$genes))
 expression.file <- expression.file1[grepl(paste(unq, collapse="|"), rownames(expression.file1)),]
 write.table(expression.file, file="interactors.expression.file", sep="\t")
