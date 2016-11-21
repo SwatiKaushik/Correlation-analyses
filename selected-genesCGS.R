@@ -69,7 +69,10 @@ venn.plot <- draw.pairwise.venn( area1 = preys.length,
 					alpha = rep(0.5, 2), 
 					cat.pos = c(0, 0), 
 					cat.dist = rep(0.025, 2), 
-					scaled = TRUE
+					scaled = TRUE,
+					lwd=4,
+					cex = 2,
+					col = rep("black",2)
 				 )
 
 #require(gridExtra)
