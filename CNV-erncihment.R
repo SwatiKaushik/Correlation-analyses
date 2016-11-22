@@ -28,7 +28,6 @@ ccg.length <- length(HS.cnv.file)
 #calculate significance
 significance.test <- rbind(c(overlap.length, preys.length), c(ccg.length, 20000))
 significance.pvalue <- fisher.test(significance.test, alternative = "greater")$p.value
-significance.pvalue
 
 write.table(overlap, file="overlapped-cnvs.txt", sep="\t")
 write.table(preys.length, file="overlapped-cnvs.txt", sep="\t", append = TRUE)
@@ -56,6 +55,6 @@ venn.plot <- draw.pairwise.venn( area1 = preys.length,
 #grid.arrange(gTree(children=venn.plot), top= A , bottom="subtitle")
 
 #writing to file
-tiff(filename = "Venn_diagram2.tiff", compression = "lzw")
+tiff(filename = "overlap-plot.tiff", compression = "lzw")
 grid.draw(venn.plot)
 dev.off()
