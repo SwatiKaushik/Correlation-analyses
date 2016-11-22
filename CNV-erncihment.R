@@ -27,7 +27,7 @@ ccg.length <- length(HS.cnv.file)
 
 #calculate significance
 significance.test <- rbind(c(overlap.length, preys.length), c(ccg.length, 20000))
-significance.pvalue <- fisher.test(significance.test, alternative = "greater")$p.value
+significance.pvalue <- fisher.test(significance.test)$p.value
 
 write.table(overlap, file="overlapped-cnvs.txt", sep="\t")
 write.table(preys.length, file="overlapped-cnvs.txt", sep="\t", append = TRUE)
