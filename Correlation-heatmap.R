@@ -60,7 +60,7 @@ heatmap.2 (data.interactors.log,
            scale = "none",
            na.rm = TRUE,
            col= col.corr,
-           trace = "none"
+           trace = "none",
            cexRow = 0.2, 
 		   cexCol = 0.2)
 		   
